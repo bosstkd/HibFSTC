@@ -7,7 +7,9 @@ package com.hsstudies;
 
 import com.hsstudies.apps.Client;
 import com.hsstudies.apps.Adresse;
+import com.hsstudies.apps.Facture;
 import com.hsstudies.apps.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -23,11 +25,12 @@ public class Principale {
         System.out.println("Etat session: "+session.isOpen());
         Transaction tx=null;
         try {
+           //-------------- 
             Client monClient = new Client();
             String[] strTab = {"Amine","Mohammed", "Mahmoudi", "Yassine", "Hamza", "Ilyess", "Amar"};
             monClient.setNom(strTab[(int)(Math.random() * 7)]);
             
-            
+           //-------------- 
             String[] villeTab = {"ElTarf","Annaba", "Paris", "Lyon", "Alger", "Oran", "Constantine"};
             String[] codePostalTab = {"36000","23000", "75000", "72000", "16000", "31000", "25000"};
             String[] complementCedexTab = {"38","38", "01", "04", "21", "28", "29"};
@@ -43,10 +46,28 @@ public class Principale {
            
             monClient.setAdresse(adr);
             
+            //--------------
+            double[] totalTab = {12000.00,25410.00,651.22,36544.2,696969.92,62142.02,363216.75};
+            Facture fct = new Facture(totalTab[(int)(Math.random() * 7)], monClient);
+            monClient.addFacture(fct);
+            
+            int randFactCreation = (int)(Math.random() * 7);
+            
+            List<Facture> lstFct = new ArrayList<>();
+            for(int i=0; i<= randFactCreation; i++){
+                fct = new Facture(totalTab[(int)(Math.random() * 7)], monClient);
+                monClient.addFacture(fct);
+                lstFct.add(fct);
+            }
+            
             tx = session.beginTransaction();
             
+           
             session.save(adr);
             session.save(monClient);
+            for(Facture fc:lstFct){
+                session.save(fc);
+            }
             
             tx.commit();
            

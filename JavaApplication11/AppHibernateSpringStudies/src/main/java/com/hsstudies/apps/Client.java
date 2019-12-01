@@ -5,6 +5,9 @@
  */
 package com.hsstudies.apps;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author Amine
@@ -14,6 +17,7 @@ public class Client {
     private String nom;
     private Adresse adresse;
     
+    private Set<Facture> factures = new HashSet<>();
     
     public int getId() {
         return id;
@@ -38,5 +42,17 @@ public class Client {
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
- 
+
+    public Set<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(Set<Facture> facture) {
+        this.factures = facture;
+    }
+
+    public void addFacture(Facture facture){
+        factures.add(facture);
+        facture.setClient(this);
+    }
 }

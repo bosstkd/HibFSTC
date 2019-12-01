@@ -7,6 +7,7 @@ package com.hsstudies;
 
 import com.hsstudies.apps.Adresse;
 import com.hsstudies.apps.Client;
+import com.hsstudies.apps.Facture;
 import com.hsstudies.apps.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
@@ -26,6 +27,11 @@ public class Principale1 {
             System.out.println("-------------------");
             for(Client clt:cltLst){
                 System.out.println("Client: "+clt.getId()+" "+clt.getNom()+"\n  "+clt.getAdresse());
+                if(clt.getFactures().size()>0){
+                    for(Facture f:clt.getFactures()) System.out.println("     "+f);
+                }
+                
+                System.out.println("_____");
             }
             
             tx.commit();

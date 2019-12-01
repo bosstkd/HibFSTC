@@ -8,11 +8,15 @@
 <hibernate-mapping>
 
      <class name="com.hsstudies.apps.Client" table="CLIENT">
-        <id name="id" type="int" column="id">
+        <id name="id" type="int" column="CLIENT_ID">
             <generator class="native"/>
         </id>
         <property name="nom" type="string" column="NOM"/>
         <many-to-one name="adresse" column="ADRESSE_ID" unique="true" not-null="true" />
+        <set name="factures" inverse="true" >
+            <key column="CLIENT_ID"></key>
+            <one-to-many class="com.hsstudies.apps.Facture" />
+        </set>
     </class>
     
 
