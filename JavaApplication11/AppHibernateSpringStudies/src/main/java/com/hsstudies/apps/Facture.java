@@ -50,6 +50,6 @@ public class Facture {
     
     @Override
     public String toString(){
-        return "Facture N°: "+id+" Montant: "+totalTTC+" Pour: "+client.getNom();
+        return "Facture N°: "+id+" Montant: "+totalTTC+" Pour: "+((client!=null)?client.getNom():"___");
     }
 }

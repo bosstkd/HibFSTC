@@ -5,6 +5,7 @@
  */
 package com.hsstudies.apps;
 
+import org.hibernate.Interceptor;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
@@ -28,6 +29,8 @@ public class HibernateUtil {
             // config file.
             Configuration conf = new Configuration();
             conf.configure();
+            conf.setInterceptor(new IntercepteurExemple());
+          
             ServiceRegistry serviceReg = new StandardServiceRegistryBuilder()
                                              .applySettings(conf.getProperties()).build();
             sessionFactory = conf.buildSessionFactory(serviceReg);
