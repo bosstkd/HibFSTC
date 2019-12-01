@@ -12,7 +12,9 @@ package com.hsstudies.apps;
 public class Client {
     private int id;
     private String nom;
-
+    private Adresse adresse;
+    
+    
     public int getId() {
         return id;
     }
@@ -28,6 +30,13 @@ public class Client {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
-    
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+ 
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+  
+     <class name="com.hsstudies.apps.Adresse" table="ADRESSE">
+        <id name="id" type="int" column="ADRESSE_ID">
+            <generator class="native"/>
+        </id>
+        <property name="ville" type="string" column="VILLE"/>
+        <property name="codePostal" type="string" column="CODEPOSTAL"/>
+        <property name="complementCedex" type="string" column="COMPLEMENTCEDEX"/>
+        <property name="ligne1" type="string" column="LIGNE1"/>
+        <property name="ligne2" type="string" column="LIGNE2"/>
+        <property name="ligne3" type="string" column="LIGNE3"/>
+    </class>
+
+</hibernate-mapping>
