@@ -3,7 +3,11 @@
 
 <!DOCTYPE hibernate-mapping PUBLIC
   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+[
+  <!ENTITY test1 SYSTEM "src/main/resources/com/hsstudies/test1.xml">
+]
+>
 
 <hibernate-mapping>
 
@@ -13,10 +17,7 @@
         </id>
         <property name="nom" type="string" column="NOM"/>
         <many-to-one name="adresse" column="ADRESSE_ID" unique="true" not-null="true" />
-        <set name="factures" inverse="true" >
-            <key column="CLIENT_ID"></key>
-            <one-to-many class="com.hsstudies.apps.Facture" />
-        </set>
+        &test1;
     </class>
     
 
